@@ -22,6 +22,7 @@ export const useGetMyUser = () => {
     if (!response.ok) {
       throw new Error("Failed to fetch user");
     }
+
     return response.json();
   };
 
@@ -35,10 +36,7 @@ export const useGetMyUser = () => {
     toast.error(error.toString());
   }
 
-  return {
-    currentUser,
-    isLoading
-  };
+  return { currentUser, isLoading };
 };
 
 type CreateUserRequest = {
@@ -89,8 +87,10 @@ type UpdateMyUserRequest = {
 
 export const useUpdateMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
+
   const updateMyUserRequest = async (formData: UpdateMyUserRequest) => {
     const accessToken = await getAccessTokenSilently();
+
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
       method: "PUT",
       headers: {
@@ -120,16 +120,9 @@ export const useUpdateMyUser = () => {
   }
 
   if (error) {
-    toast.success(error.toString());
+    toast.error(error.toString());
     reset();
   }
 
-  return {
-    updateUser,
-    isLoading
-    //isSuccess,
-    //isError,
-    //error,
-    // reset
-  };
+  return { updateUser, isLoading };
 };

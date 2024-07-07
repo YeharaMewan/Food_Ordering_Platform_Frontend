@@ -7,9 +7,9 @@ type Props = {
   showHero?: boolean;
 };
 
-const layout = ({ children, showHero = false }: Props) => {
+const Layout = ({ children, showHero = false }: Props) => {
   return (
-    <div className="flex flex-col min-h-screen ">
+    <div className="flex flex-col min-h-screen">
       <Header />
       {showHero && <Hero />}
       <div className="container mx-auto flex-1 py-10">{children}</div>
@@ -18,4 +18,4 @@ const layout = ({ children, showHero = false }: Props) => {
   );
 };
 
-export default layout;
+export default Layout;
