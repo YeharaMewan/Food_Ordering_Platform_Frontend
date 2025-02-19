@@ -8,7 +8,7 @@ const HomePage = () => {
 
   const handleSearchSubmit = (searchFormValues: SearchForm) => {
     navigate({
-      pathname: `/search/${searchFormValues.searchQuery}`
+      pathname: `/search/${searchFormValues.searchQuery}`,
     });
   };
 
@@ -16,9 +16,9 @@ const HomePage = () => {
     <div className="flex flex-col gap-12">
       <div className="md:px-32 bg-white rounded-lg shadow-md py-8 flex flex-col gap-5 text-center -mt-16">
         <h1 className="text-5xl font-bold tracking-tight text-green-600">
-          Tuck into a takeway today
+          Crave it, Click it, Devour it
         </h1>
-        <span className="text-xl">Food is just a click away!</span>
+        <span className="text-xl">Your favorite meals are just a tap away!</span>
         <SearchBar
           placeHolder="Search by City or Town"
           onSubmit={handleSearchSubmit}
