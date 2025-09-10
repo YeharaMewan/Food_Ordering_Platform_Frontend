@@ -3,7 +3,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 
 type Props = {
@@ -14,16 +14,16 @@ type Props = {
 const SORT_OPTIONS = [
   {
     label: "Best match",
-    value: "bestMatch"
+    value: "bestMatch",
   },
   {
     label: "Delivery price",
-    value: "deliveryPrice"
+    value: "deliveryPrice",
   },
   {
     label: "Estimated delivery time",
-    value: "estimatedDeliveryTime"
-  }
+    value: "estimatedDeliveryTime",
+  },
 ];
 
 const SortOptionDropdown = ({ onChange, sortOption }: Props) => {

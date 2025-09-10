@@ -4,7 +4,7 @@ import {
   PaginationItem,
   PaginationLink,
   PaginationNext,
-  PaginationPrevious
+  PaginationPrevious,
 } from "./ui/pagination";
 
 type Props = {

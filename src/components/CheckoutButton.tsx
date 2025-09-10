@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import LoadingButton from "./LoadingButton";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import UserProfileForm, {
-  UserFormData
+  UserFormData,
 } from "@/forms/user-profile-form/UserProfileForm";
 import { useGetMyUser } from "@/api/MyUserApi";
 
@@ -18,7 +18,7 @@ const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
   const {
     isAuthenticated,
     isLoading: isAuthLoading,
-    loginWithRedirect
+    loginWithRedirect,
   } = useAuth0();
 
   const { pathname } = useLocation();
@@ -28,14 +28,14 @@ const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
   const onLogin = async () => {
     await loginWithRedirect({
       appState: {
-        returnTo: pathname
-      }
+        returnTo: pathname,
+      },
     });
   };
 
   if (!isAuthenticated) {
     return (
-      <Button onClick={onLogin} className="bg-green-600 flex-1">
+      <Button onClick={onLogin} className="bg-orange-500 flex-1">
         Log in to check out
       </Button>
     );
@@ -48,7 +48,7 @@ const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button disabled={disabled} className="bg-green-500 flex-1">
+        <Button disabled={disabled} className="bg-orange-500 flex-1">
           Go to checkout
         </Button>
       </DialogTrigger>

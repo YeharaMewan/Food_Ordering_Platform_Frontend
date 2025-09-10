@@ -8,7 +8,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import LoadingButton from "@/components/LoadingButton";
@@ -21,7 +21,7 @@ const formSchema = z.object({
   name: z.string().min(1, "name is required"),
   addressLine1: z.string().min(1, "Address Line 1 is required"),
   city: z.string().min(1, "City is required"),
-  country: z.string().min(1, "Country is required")
+  country: z.string().min(1, "Country is required"),
 });
 
 export type UserFormData = z.infer<typeof formSchema>;
@@ -39,11 +39,11 @@ const UserProfileForm = ({
   isLoading,
   currentUser,
   title = "User Profile",
-  buttonText = "Submit"
+  buttonText = "Submit",
 }: Props) => {
   const form = useForm<UserFormData>({
     resolver: zodResolver(formSchema),
-    defaultValues: currentUser
+    defaultValues: currentUser,
   });
 
   useEffect(() => {
@@ -133,7 +133,7 @@ const UserProfileForm = ({
         {isLoading ? (
           <LoadingButton />
         ) : (
-          <Button type="submit" className="bg-green-600">
+          <Button type="submit" className="bg-orange-500">
             {buttonText}
           </Button>
         )}

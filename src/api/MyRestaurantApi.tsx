@@ -14,8 +14,8 @@ export const useGetMyRestaurant = () => {
     const response = await fetch(`${API_BASE_URL}/api/my/restaurant`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
+        Authorization: `Bearer ${accessToken}`,
+      },
     });
 
     if (!response.ok) {
@@ -43,9 +43,9 @@ export const useCreateMyRestaurant = () => {
     const response = await fetch(`${API_BASE_URL}/api/my/restaurant`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${accessToken}`
+        Authorization: `Bearer ${accessToken}`,
       },
-      body: restaurantFormData
+      body: restaurantFormData,
     });
 
     if (!response.ok) {
@@ -59,7 +59,7 @@ export const useCreateMyRestaurant = () => {
     mutate: createRestaurant,
     isLoading,
     isSuccess,
-    error
+    error,
   } = useMutation(createMyRestaurantRequest);
 
   if (isSuccess) {
@@ -84,9 +84,9 @@ export const useUpdateMyRestaurant = () => {
     const response = await fetch(`${API_BASE_URL}/api/my/restaurant`, {
       method: "PUT",
       headers: {
-        Authorization: `Bearer ${accessToken}`
+        Authorization: `Bearer ${accessToken}`,
       },
-      body: restaurantFormData
+      body: restaurantFormData,
     });
 
     if (!response) {
@@ -100,7 +100,7 @@ export const useUpdateMyRestaurant = () => {
     mutate: updateRestaurant,
     isLoading,
     error,
-    isSuccess
+    isSuccess,
   } = useMutation(updateRestaurantRequest);
 
   if (isSuccess) {
@@ -123,8 +123,8 @@ export const useGetMyRestaurantOrders = () => {
     const response = await fetch(`${API_BASE_URL}/api/my/restaurant/order`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     });
 
     if (!response.ok) {
@@ -161,9 +161,9 @@ export const useUpdateMyRestaurantOrder = () => {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ status: updateStatusOrderRequest.status })
+        body: JSON.stringify({ status: updateStatusOrderRequest.status }),
       }
     );
 
@@ -179,7 +179,7 @@ export const useUpdateMyRestaurantOrder = () => {
     isLoading,
     isError,
     isSuccess,
-    reset
+    reset,
   } = useMutation(updateMyRestaurantOrder);
 
   if (isSuccess) {
