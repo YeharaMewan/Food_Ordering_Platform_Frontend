@@ -8,7 +8,7 @@ const MenuSection = () => {
 
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "menuItems"
+    name: "menuItems",
   });
 
   return (

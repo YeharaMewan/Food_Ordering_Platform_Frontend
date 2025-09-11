@@ -2,7 +2,7 @@ import {
   FormDescription,
   FormField,
   FormItem,
-  FormMessage
+  FormMessage,
 } from "@/components/ui/form";
 import { cuisineList } from "@/config/restaurant-options-config";
 import { useFormContext } from "react-hook-form";

@@ -21,7 +21,7 @@ export const useGetRestaurant = (restaurantId?: string) => {
     "fetchRestaurant",
     getRestaurantByIdRequest,
     {
-      enabled: !!restaurantId
+      enabled: !!restaurantId,
     }
   );
 
@@ -58,6 +58,6 @@ export const useSearchRestaurants = (
 
   return {
     results,
-    isLoading
+    isLoading,
   };
 };

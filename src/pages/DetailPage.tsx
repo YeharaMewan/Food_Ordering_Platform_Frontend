@@ -50,8 +50,8 @@ const DetailPage = () => {
             _id: menuItem._id,
             name: menuItem.name,
             price: menuItem.price,
-            quantity: 1
-          }
+            quantity: 1,
+          },
         ];
       }
 
@@ -88,7 +88,7 @@ const DetailPage = () => {
       cartItems: cartItems.map((cartItem) => ({
         menuItemId: cartItem._id,
         name: cartItem.name,
-        quantity: cartItem.quantity.toString()
+        quantity: cartItem.quantity.toString(),
       })),
       restaurantId: restaurant._id,
       deliveryDetails: {
@@ -96,8 +96,8 @@ const DetailPage = () => {
         addressLine1: userFormData.addressLine1,
         city: userFormData.city,
         country: userFormData.country,
-        email: userFormData.email as string
-      }
+        email: userFormData.email as string,
+      },
     };
 
     const data = await createCheckoutSession(checkoutData);

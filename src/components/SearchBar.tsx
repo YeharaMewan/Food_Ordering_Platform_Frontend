@@ -9,8 +9,8 @@ import { useEffect } from "react";
 
 const formSchema = z.object({
   searchQuery: z.string({
-    required_error: "Restaurant name is required"
-  })
+    required_error: "Restaurant name is required",
+  }),
 });
 
 export type SearchForm = z.infer<typeof formSchema>;
@@ -26,8 +26,8 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
   const form = useForm<SearchForm>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      searchQuery
-    }
+      searchQuery,
+    },
   });
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
 
   const handleReset = () => {
     form.reset({
-      searchQuery: ""
+      searchQuery: "",
     });
 
     if (onReset) {
@@ -49,13 +49,13 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className={`flex items-center gap-3 justify-between flex-row border-2 rounded-full p-3 ${
-          form.formState.errors.searchQuery && "border-red-600"
+          form.formState.errors.searchQuery && "border-red-500"
         }`}
       >
         <Search
           strokeWidth={2.5}
           size={30}
-          className="ml-1 text-green-600 hidden md:block"
+          className="ml-1 text-orange-500 hidden md:block"
         />
         <FormField
           control={form.control}
@@ -81,7 +81,7 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
         >
           Reset
         </Button>
-        <Button type="submit" className="rounded-full bg-green-600">
+        <Button type="submit" className="rounded-full bg-orange-500">
           Search
         </Button>
       </form>

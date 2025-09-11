@@ -15,8 +15,8 @@ export const useGetMyUser = () => {
       method: "GET",
       headers: {
         Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     });
 
     if (!response.ok) {
@@ -29,7 +29,7 @@ export const useGetMyUser = () => {
   const {
     data: currentUser,
     isLoading,
-    error
+    error,
   } = useQuery("fetchCurrentUser", getMyUserRequest);
 
   if (error) {
@@ -53,9 +53,9 @@ export const useCreateMyUser = () => {
       method: "POST",
       headers: {
         Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     });
 
     if (!response.ok) {
@@ -67,14 +67,14 @@ export const useCreateMyUser = () => {
     mutateAsync: createUser,
     isLoading,
     isError,
-    isSuccess
+    isSuccess,
   } = useMutation(createMyUserRequest);
 
   return {
     createUser,
     isLoading,
     isError,
-    isSuccess
+    isSuccess,
   };
 };
 
@@ -95,9 +95,9 @@ export const useUpdateMyUser = () => {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     });
 
     if (!response.ok) {
@@ -112,7 +112,7 @@ export const useUpdateMyUser = () => {
     isLoading,
     isSuccess,
     error,
-    reset
+    reset,
   } = useMutation(updateMyUserRequest);
 
   if (isSuccess) {

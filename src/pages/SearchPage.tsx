@@ -21,7 +21,7 @@ const SearchPage = () => {
     searchQuery: "",
     page: 1,
     selectedCuisines: [],
-    sortOption: "bestMatch"
+    sortOption: "bestMatch",
   });
 
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
@@ -32,7 +32,7 @@ const SearchPage = () => {
     setSearchState((prevState) => ({
       ...prevState,
       sortOption,
-      page: 1
+      page: 1,
     }));
   };
 
@@ -40,14 +40,14 @@ const SearchPage = () => {
     setSearchState((prevState) => ({
       ...prevState,
       selectedCuisines,
-      page: 1
+      page: 1,
     }));
   };
 
   const setPage = (page: number) => {
     setSearchState((prevState) => ({
       ...prevState,
-      page
+      page,
     }));
   };
 
@@ -55,7 +55,7 @@ const SearchPage = () => {
     setSearchState((prevState) => ({
       ...prevState,
       searchQuery: searchFormData.searchQuery,
-      page: 1
+      page: 1,
     }));
   };
 
@@ -63,7 +63,7 @@ const SearchPage = () => {
     setSearchState((prevState) => ({
       ...prevState,
       searchQuery: "",
-      page: 1
+      page: 1,
     }));
   };
 

@@ -8,11 +8,12 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
+  SelectValue,
 } from "./ui/select";
 import { ORDER_STATUS } from "@/config/order-status-config";
 import { useUpdateMyRestaurantOrder } from "@/api/MyRestaurantApi";
 import { useEffect, useState } from "react";
+import { formatOrderTotal } from "@/utils/orderUtils";
 
 type Props = {
   order: Order;
@@ -29,7 +30,7 @@ const OrderItemCard = ({ order }: Props) => {
   const handleStatusChange = async (newStatus: OrderStatus) => {
     await updateRestaurantStatus({
       orderId: order._id as string,
-      status: newStatus
+      status: newStatus,
     });
     setStatus(newStatus);
   };
@@ -68,7 +69,7 @@ const OrderItemCard = ({ order }: Props) => {
           <div>
             Total Cost:
             <span className="ml-2 font-normal">
-              £{(order.totalAmount / 100).toFixed(2)}
+              {formatOrderTotal(order)}
             </span>
           </div>
         </CardTitle>
@@ -76,8 +77,8 @@ const OrderItemCard = ({ order }: Props) => {
       </CardHeader>
       <CardContent className="flex flex-col gap-6">
         <div className="flex flex-col gap-2">
-          {order.cartItems.map((cartItem) => (
-            <span>
+          {order.cartItems.map((cartItem, index) => (
+            <span key={`${cartItem.menuItemId}-${index}`}>
               <Badge variant="outline" className="mr-2">
                 {cartItem.quantity}
               </Badge>
@@ -97,7 +98,9 @@ const OrderItemCard = ({ order }: Props) => {
             </SelectTrigger>
             <SelectContent position="popper">
               {ORDER_STATUS.map((status) => (
-                <SelectItem value={status.value}>{status.label}</SelectItem>
+                <SelectItem key={status.value} value={status.value}>
+                  {status.label}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>

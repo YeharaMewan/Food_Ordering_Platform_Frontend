@@ -13,8 +13,8 @@ export const useGetMyOrders = () => {
 
     const response = await fetch(`${API_BASE_URL}/api/order`, {
       headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
+        Authorization: `Bearer ${accessToken}`,
+      },
     });
 
     if (!response.ok) {
@@ -28,7 +28,7 @@ export const useGetMyOrders = () => {
     "fetchMyOrders",
     getMyOrdersRequest,
     {
-      refetchInterval: 5000
+      refetchInterval: 5000,
     }
   );
 
@@ -64,9 +64,9 @@ export const useCreateCheckoutSession = () => {
         method: "POST",
         headers: {
           Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(checkoutSessionRequest)
+        body: JSON.stringify(checkoutSessionRequest),
       }
     );
 
@@ -81,7 +81,7 @@ export const useCreateCheckoutSession = () => {
     mutateAsync: createCheckoutSession,
     isLoading,
     error,
-    reset
+    reset,
   } = useMutation(createCheckoutSessionRequest);
 
   if (error) {
@@ -91,6 +91,6 @@ export const useCreateCheckoutSession = () => {
 
   return {
     createCheckoutSession,
-    isLoading
+    isLoading,
   };
 };
