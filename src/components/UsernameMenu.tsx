@@ -9,9 +9,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
+import { useGetMyUser } from "@/api/MyUserApi";
 
 const UsernameMenu = () => {
   const { user, logout } = useAuth0();
+  const { currentUser } = useGetMyUser();
 
   return (
     <DropdownMenu>
@@ -20,14 +22,6 @@ const UsernameMenu = () => {
         {user?.email}
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>
-          <Link
-            to="/manage-restaurant"
-            className="font-bold hover:text-orange-500"
-          >
-            Manage Restaurant
-          </Link>
-        </DropdownMenuItem>
         <DropdownMenuItem>
           <Link to="/user-profile" className="font-bold hover:text-orange-500">
             User Profile

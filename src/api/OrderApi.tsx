@@ -94,3 +94,41 @@ export const useCreateCheckoutSession = () => {
     isLoading,
   };
 };
+
+export const useDeleteOrder = () => {
+  const { getAccessTokenSilently } = useAuth0();
+
+  const deleteOrderRequest = async (orderId: string) => {
+    const accessToken = await getAccessTokenSilently();
+
+    const response = await fetch(`${API_BASE_URL}/api/order/${orderId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to delete order");
+    }
+
+    return response.json();
+  };
+
+  const {
+    mutateAsync: deleteOrder,
+    isLoading,
+    error,
+    reset,
+  } = useMutation(deleteOrderRequest);
+
+  if (error) {
+    toast.error(error.toString());
+    reset();
+  }
+
+  return {
+    deleteOrder,
+    isLoading,
+  };
+};
